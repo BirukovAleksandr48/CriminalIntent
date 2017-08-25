@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
@@ -22,6 +23,7 @@ public class DatePickerFragment extends DialogFragment {
     public static final String EXTRA_DATE = "com.bignerdranch.android.criminalintent.date";
 
     public static DatePickerFragment newInstance(Date date) {
+        Log.d("MyLog", "DatePickerFragment newInstance");
         Bundle args = new Bundle();
         args.putSerializable(ARG_DATE, date);
         DatePickerFragment fragment = new DatePickerFragment();
@@ -31,7 +33,7 @@ public class DatePickerFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
+        Log.d("MyLog", "DatePickerFragment onCreateDialog");
         Date date = (Date) getArguments().getSerializable(ARG_DATE);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -63,6 +65,7 @@ public class DatePickerFragment extends DialogFragment {
     }
 
     private void sendResult(int resultCode, Date date) {
+        Log.d("MyLog", "DatePickerFragment sendResult");
         if (getTargetFragment() == null) {
             return;
         }
